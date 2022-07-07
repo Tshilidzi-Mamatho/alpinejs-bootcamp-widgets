@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlpineJS Widgets for Bootcamp Functions</title>
+
+    <script src="bootcampFunctionsJS/greet.js"></script>
+    <script src="widgets/greet-widget.js" defer></script>
+
+    <script src="bootcampFunctionsJS/enoughAirtime.js"></script>
+    <script src="widgets/enoughAirtime-Widget.js"></script>
+
+    <script src="bootcampFunctionsJS/transportFee.js"></script>
+    <script src="widgets/transportFee-Widget.js"></script>
+
+    <script src="bootcampFunctionsJS/wordGame.js"></script>
+    <script src="widgets/wordGame-Widget.js"></script>
+
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="alpineJS">
+        <div class="heading">
+            <h1>AlpineJS Widgets for Bootcamp Functions</h1>
+        </div>
+        <div class="widgets">
+
+            <div class="greet" x-data="greetwidget">
+                <h3>Greet</h3>
+                <div class="input">
+                    <label for="neighbourName"><b>Please type in your neighbour's name:</b> </label>
+                    <input type="text" x-model="neighbourName" id="neighbourName">
+                </div>
+                <div class="cont"><button x-on:click="greetMe"><b>Greetings</b></button></div>
+
+                <div x-show="message.length > 0" class="message" x-text="message">
+
+                </div>
+
+
+            </div>
+
+
+            <div class="transport" x-data="transportFeeWidget">
+                <h3>Transport Fee</h3>
+
+                <label><b>Please select shift:</b></label>
+
+                <div>
+                    <input x-model="shift" type="radio" name="cost" id="morning" value="morning" @change="displayShift">
+                    <label for="morning">Morning</label><br />
+                </div>
+
+                <div>
+                    <input x-model="shift" type="radio" name="cost" id="afternoon" value="afternoon"
+                        @change="displayShift">
+                    <label for="afternoon">Afternoon</label><br />
+                </div>
+
+                <div>
+                    <input x-model="shift" type="radio" name="cost" id="night" value="nightshift"
+                        @change="displayShift">
+                    <label for="night">Night</label>
+                </div>
+
+
+                <div x-show="shiftMsg.length > 0" x-text="shiftMsg" class="message">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="Widgets2">
+
+            <div class="enoughAirtime" x-data="enoughAirtimeWidget">
+                <h3>Enough Airtime</h3>
+
+                <div>
+                    <label for="msg"><b>Enter your phone usages:</b></label>
+                    <input type="text" id="msg" x-model="airtimeUsed">
+                </div>
+                <div>
+                    <label for="msg"><b>Enter available airtime:</b></label>
+                    <input type="text" id="msg" x-model="totalAirtime">
+                </div>
+                <div>
+                    <button x-on:click="totalBill"><b>Calculate Usage</b></button>
+                </div>
+
+
+                <div x-show="airtimeLeft.length > 0" class="message" x-text="airtimeLeft">
+
+                </div>
+            </div>
+
+            <div class="wordGame" x-data="wordGameWidget">
+                <h3>Word Game</h3>
+                <div>
+                    <label for="string"><b>Type your sentence in the field: </b></label>
+                    <input type="text" id="string" x-model="word">
+                    <div><button @click="mySentence"><b>Sort and Count</b></button></div>
+
+                </div>
+                <span>
+                    <div x-show="longWord.length > 0" class="message" x-text="longWord">
+
+                    </div>
+                    <div x-show="shortWord.length > 0" class="message" x-text="shortWord">
+
+                    </div>
+                    <div x-show="wordLength.length > 0" class="message" x-text="wordLength">
+
+                    </div>
+                </span>
+
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
